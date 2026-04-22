@@ -1,0 +1,19 @@
+{
+  "semantic_cosine_similarity": 0.36005666851997375,
+  "similarity_times_doc_length": 0.11441024392843246,
+  "qtype_how": 0.08691244572401047,
+  "document_length": 0.08308704942464828,
+  "qtype_when": 0.07465537637472153,
+  "qtype_who": 0.06428385525941849,
+  "qtype_other": 0.03965505585074425,
+  "qtype_where": 0.028943797573447227,
+  "qtype_what": 0.027410464361310005,
+  "bm25_score": 0.023538652807474136,
+  "tfidf_similarity": 0.021574944257736206,
+  "qtype_why": 0.01871071383357048,
+  "query_length": 0.016344111412763596,
+  "token_overlap_ratio": 0.014176364056766033,
+  "normalized_overlap": 0.014174056239426136,
+  "token_overlap": 0.012066214345395565,
+  "named_entity_count": 0.0
+}
