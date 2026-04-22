@@ -1,5 +1,12 @@
 CLAUDE.md
 
+# Python cache
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
 # Data files
 data/processed/*
 data/raw/*
