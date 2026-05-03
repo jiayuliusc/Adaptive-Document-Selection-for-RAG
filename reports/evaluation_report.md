@@ -106,8 +106,8 @@ Feature importances are computed by XGBoost's built-in `feature_importances_` (g
 
 ### 4.1 Precision–Recall Trade-off
 
-The test precision is **0.573** while recall is **0.815**. This means:
-- The model recovers ~82% of all relevant documents.
+The test precision is **0.606** while recall is **0.776**. This means:
+- The model recovers ~78% of all relevant documents.
 - But for every 10 documents it labels as relevant, only ~6 are actually relevant.
 
 This asymmetry is largely by design. `scale_pos_weight=3` pushes the model to be recall-biased, which is usually preferable in a retrieval-before-generation pipeline: it is better to include a relevant document than to miss it. However, this comes at a cost — many irrelevant documents are also included, increasing the context burden on the downstream LLM.
@@ -136,7 +136,7 @@ At the default threshold of 0.5, the model operates as follows on the test set:
 
 ### 4.3 ROC and Precision–Recall Curves
 
-- **Test AUROC: 0.883.** The ROC curve demonstrates strong discrimination across all operating thresholds.
+- **Test AUROC: 0.878.** The ROC curve demonstrates strong discrimination across all operating thresholds.
 - The PR curve shows that increasing precision requires reducing recall steeply below a score threshold of ~0.7, confirming the default threshold of 0.5 is well-calibrated for a recall-first retrieval use case.
 
 *See [`models/saved/visualization/roc_curve.png`](../models/saved/visualization/roc_curve.png) and [`models/saved/visualization/pr_curve.png`](../models/saved/visualization/pr_curve.png).*
@@ -157,7 +157,7 @@ The XGBoost reranker achieves strong and stable performance across splits. Key f
 
 1. Dense semantic similarity is by far the most important feature (36%), confirming that sentence-transformer embeddings capture the core relevance signal in NQ.
 2. Question type features collectively contribute ~34% of importance, showing the model adapts its behavior to different question categories.
-3. The model generalizes well: train-to-test AUROC drop is only 0.012, with no significant overfitting.
-4. The model is recall-biased (recall 0.815, precision 0.573), appropriate for retrieval but at the cost of some noise in the retrieved context.
+3. The model generalizes well: train-to-test AUROC drop is only 0.041, with no significant overfitting.
+4. The model is recall-biased (recall 0.776, precision 0.606), appropriate for retrieval but at the cost of some noise in the retrieved context.
 5. `named_entity_count` contributes nothing and should be removed or replaced with proper spaCy NER in future iterations.
 6. Lexical features (BM25, TF-IDF, token overlap) add marginal but nonzero value on top of semantic embeddings.
